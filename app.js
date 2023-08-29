@@ -4,9 +4,11 @@ const app = express();
 const path = require('path');
 const Campground = require('./models/campground')
 const methodOverride = require('method-override');
+const ejsMate = require('ejs-mate');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.engine('ejs', ejsMate);
 
 mongoose.connect('mongodb://localhost:27017/yelp-camp', { 
     useNewUrlParser: true, 
